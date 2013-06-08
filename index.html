@@ -5,46 +5,97 @@
   <title>Larry Fox</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link href="//cdn.symbolset.com/dee1aa50bcb1845052a4acc63349ecfc7bf78907/symbolset.css" rel="stylesheet">
   <script src="//use.typekit.net/otl6jdm.js" type="text/javascript"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
-  <h1>Larry Fox</h1>
-  <p>Development, User Experience, Brunch Photography, and Winamp Themes.</p>
 
-  <p><a href="http://oak.is">Making stuff at Oak.</a><br>
-  <a href="http://photos.larryfox.us">Occasionally posting photos.</a></p>
+  <header>
+    <img src="/img/foxy.svg">
+  </header>
 
-  <h3>As seen on</h3>
-  <ul>
-    <li><a href="http://twitter.com/larrythefox">Twitter</a></li>
-    <li><a href="https://github.com/larrythefox"><i>Github</i> <span>octocat</span></a></li>
-    <li><a href="https://instagram.com/larrythefox">Instagram</a></li>
-    <li><a href="https://stillfeelingclever.com">Tumblr</a></li>
-    <li><a href="http://www.rdio.com/people/lwf/">Rdio</a></li>
-    <li><a href="https://svpply.com/fox">Svpply</a></li>
-  </ul>
+  <article class="l-about">
+    <p>Development, User Experience, Brunch Photography, Winamp Themes. I enjoy Hendricks gin and wines that sparkle. Everything cool happened before my time.</p>
+  </article>
 
-  <h3>Equipment</h3>
-  <ul>
-    <li>Mac Book Pro 15"</li>
-    <li>Thunderbolt Display 27"</li>
-    <li>Sony MDR-V6</li>
-    <li>iPhone 5</li>
-    <li>Sublime Text 3</li>
-    <li>Ray&#8211;Ban Wayfarer</li>
-    <li>Fujica ST801</li>
-  </ul>
+  <article class="l-work">
+    <h4>Working</h4>
+    <p>I build great products with great people at Oak.</p>
+    <ul>
+      <li>Siteleaf</li>
+      <li>Gazette</li>
+      <li>Symbolset</li>
+      <li>Blue</li>
+      <li>Dropmark</li>
+    </ul>
+    <p>We’ve also worked with amazing clientele.</p>
+    <ul>
+      <li>Creative Mornings</li>
+      <li>Working not Working</li>
+      <li>Tattly</li>
+      <li>Quarterly</li>
+    </ul>
+  </article>
 
-  <h3>Reading</h3>
-  <ul>
-    <li>Writing That Works</li>
-    <li><del>The Shape of Design</del></li>
-  </ul>
+  <article class="l-photos">
+    <h4>Photographing</h4>
+    <p>I occationally take photos, either with my iPhone, Fujica ST801, or a Kodak FunSaver.</p>
+    <ul id="images" class="cf">
+      <li class="image">
+        <img src="http://24.media.tumblr.com/72ba1e295802b858052097208fbbb71d/tumblr_mmrhrweCWY1rac15ko1_1280.jpg">
+        <span class="image-caption">Greenpoint<br><time>Jun 1st, 2013</time></span>
+      </li>
+      <li class="image">
+        <img src="http://25.media.tumblr.com/c52e886aa266b66cb91ad646b2bf3292/tumblr_mo2wbrKlAa1rac15ko1_1280.jpg">
+        <span class="image-caption">Belmont<br><time>Jun 1st, 2013</time></span>
+      </li>
+      <li class="image">
+        <img src="http://farm8.staticflickr.com/7195/6954599567_7ec5a17180_c.jpg">
+        <span class="image-caption">Skate<br><time>Jun 1st, 2013</time></span>
+      </li>
+      <li class="image">
+        <img src="http://24.media.tumblr.com/7ab33625c0db03220b46303063de5107/tumblr_mo2vgpxUHU1rac15ko1_1280.jpg">
+        <span class="image-caption">Great Adventure<br><time>Jun 1st, 2013</time></span>
+      </li>
+      <li class="image">
+        <img src="http://25.media.tumblr.com/4d22c1fff7f33026210866196fc25ead/tumblr_mo2voka79M1rac15ko1_1280.jpg">
+        <span class="image-caption">Rainy Day<br><time>Jun 1st, 2013</time></span>
+      </li>
+      <li class="image">
+        <img src="http://24.media.tumblr.com/b4ff017a0067542d51ed0de81723eb9f/tumblr_mkm26xCmjY1rac15ko1_1280.jpg">
+        <span class="image-caption">Manhattan<br><time>Jun 1st, 2013</time></span>
+      </li>
+      <li class="image">
+        <img src="http://25.media.tumblr.com/17f67eb34cd910fc695697eb7e73f484/tumblr_mkm20jEVWW1rac15ko1_1280.jpg">
+        <span class="image-caption">Empire<br><time>Jun 1st, 2013</time></span>
+      </li>
+    </ul>
+  </article>
 
-  <script type="text/javascript">
+  <article class="l-blog">
+    <h4>Writing</h4>
+    <ul>
+      <li class="entry"><a href="#" class="entry-title">Theming with Siteleaf</a></li>
+      <li class="entry"><a href="#" class="entry-title">Building Siteleaf</a></li>
+      <li class="entry"><a href="#" class="entry-title">The weekend of Gazette</a></li>
+      <li class="entry"><a href="#" class="entry-title">Symbolset hosting</a></li>
+    </ul>
+  </article>
+
+  <article>
+    <h4>♪</h4>
+    <p>Sometimes I make music but dont post any of it…</p>
+  </article>
+
+  <script src="/js/masonry.js"></script>
+  <script>
+    window.onload = function() {
+      var wall = new Masonry( document.getElementById('images') )
+    }
+  </script>
+
+  <script>
     var _gaq=[['_setAccount','UA-19847454-7'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 </body>
