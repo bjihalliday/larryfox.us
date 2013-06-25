@@ -1,0 +1,14 @@
+{% capture body %}
+  <article class="l-photos">
+    {{body}}
+
+    {% for post in posts %}
+      <figure class="image">
+        <img src="{{post.assets[0].url}}" alt="{{post.title}}">
+        <time class="image-time">{{post.date | date: "%b %d, %Y"}}</time>
+      </figure>
+    {% endfor %}
+  </article>
+{% endcapture %}
+
+{% include 'layouts/default' %}

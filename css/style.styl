@@ -1,0 +1,162 @@
+body_font = "skolar", "adelle", georgia, serif
+heading_font = "jaf-facitweb", "brandon-grotesque", helvetica, sans-serif
+text_color = #16161D
+light_text_color = #38374b
+accent_color = #FF3D3C //#FF4500
+accent_color_rgb = rgba(255,80,2,1)
+text_shadow_color = rgba(22,22,29,.05)
+
+del
+  position: relative
+  &:after
+    border-bottom: 7px solid text_color
+    content: ''
+    display: block
+    position: absolute
+    pointer-events: none
+    top: .65em
+    width: 100%
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: heading_font
+  text-align: center
+  margin: 2em 0
+
+a
+  color: accent_color
+  text-decoration: none
+  transition: color 0.2s ease-in-out
+  -webkit-transition: color 0.2s ease-in-out
+
+  &:hover
+    color: light_text_color
+
+  p &
+    display: inline
+    color text_color
+    border-bottom: 1px solid accent_color
+    &:hover
+      color: accent_color
+
+img
+  max-width: 100%
+
+pre
+  border-radius: 2px
+  box-shadow: 0 0 0 3px rgba(0,0,0,.05) inset
+  color: light_text_color
+  line-height: 1.1
+  padding: .5em 1em .75em
+  overflow: scroll
+  code
+    background: none
+    box-shadow: none
+    padding: 0
+
+code
+  // background: rgba(245,255,125,0.3)
+  border-radius: 2px
+  box-shadow: 0 0 0 2px rgba(0,0,0,.05) inset
+  font-size: .875rem
+  padding: .25em .5em
+
+body
+  color: text_color
+  font-size: 22px
+  line-height: 1.5
+  font-family: body_font
+  margin: auto auto 2em
+  max-width: 33em
+  padding: 0 1em
+
+header
+  text-align: center
+  padding: 2.714em 0 1.857em // 38px 0 26px
+  font-size: .8rem
+  font-weight: bold
+  margin-bottom: 4em
+  text-rendering: optimizeLegibility
+  font-family: heading_font
+  text-transform: uppercase
+  letter-spacing: 1px
+
+  .logo
+    width: 52px
+
+.site-nav
+  margin: 1.5em 0 0
+  ul
+    padding: 0
+    margin: 0
+  li
+    color: light_text_color
+    display: inline-block
+    list-style: none
+    &:after
+      content: " • "
+    &:last-child:after
+      content: ""
+
+  .is-current
+    color: light_text_color
+
+
+.post
+  margin-bottom: 4.762em
+.post-title
+  font-size: 1.7272em // 38px
+  margin: 0
+.post-sep
+  margin: 1em auto 1.25em
+  width: 25%
+  min-width: 50px
+  border: 0
+  border-bottom: 3px solid rgba(0,0,0,.05)
+
+
+.image
+  padding: 0
+  margin: 1em 0
+  list-style: none
+  position: relative
+  img
+    display: block
+
+.image-time
+  font-family: heading_font
+  font-size: .8rem
+  text-transform: uppercase
+  color: accent_color
+  position: absolute
+  bottom: 10px
+  right: 15px
+
+
+.work
+  display: inline-block
+  font-family: heading_font
+  font-size: 1.428em
+  float: left
+  margin: 0
+  padding: 0
+  max-width: 60%
+
+  h3
+    display: none
+
+.is-gazette,
+.is-bar-lawrence
+  max-width: 40%
+
+.cf:before,
+.cf:after
+  content: " "
+  display: table
+
+.cf:after
+  clear: both
