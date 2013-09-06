@@ -1,0 +1,4 @@
+images/*
+.DS_Store
+config.ru
+.ruby-version

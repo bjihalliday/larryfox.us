@@ -1,14 +1,54 @@
 {% capture body %}
   <article class="l-photos">
     {{body}}
-
-    {% for post in posts %}
+    <!-- {% for post in posts %}
       <figure class="image">
         <img src="{{post.assets[0].url}}" alt="{{post.title}}">
         <time class="image-time">{{post.date | date: "%b %d, %Y"}}</time>
       </figure>
-    {% endfor %}
+    {% endfor %} -->
   </article>
+  <script>
+    (function(){
+      function loop(list, fn) {
+        if (!list || list.length <= 0) return
+        (function chain(i) {
+          if (i >= list.length) return
+          fn(list[i], function() {
+            chain(i + 1)
+          })
+        })(0)
+      }
+
+      function reqListener () {
+        var photos = JSON.parse(this.responseText)
+        var container = document.querySelector('.l-photos')
+        var figure, img, time
+
+        loop(photos, function buildPhoto (photo, next) {
+          figure = document.createElement('figure')
+          figure.className = 'image'
+          time = document.createElement('time')
+          time.className = 'image-time'
+          time.innerText = photo.human_date
+          img = new Image()
+          img.alt = photo.title
+          figure.appendChild(img)
+          figure.appendChild(time)
+          img.onload = function(){
+            container.appendChild(figure)
+            window.setTimeout(next, 200)
+          }
+          img.src = photo.url
+        })
+      }
+
+      var xhr = new XMLHttpRequest()
+      xhr.onload = reqListener
+      xhr.open('GET', '/photos/photos.json', true)
+      xhr.send()
+    })()
+  </script>
 {% endcapture %}
 
 {% include 'layouts/default' %}
