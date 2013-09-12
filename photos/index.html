@@ -1,65 +1,73 @@
 {% capture body %}
   <main class="l-photos">
     {{body}}
+    {% for post in posts limit: 3 %}
+      <figure class="image">
+        <img src="{{post.assets[0].url}}" alt="{{post.title}}">
+        <time class="image-time">{{post.date | date: "%b %d, %Y"}}</time>
+      </figure>
+    {% endfor %}
   </main>
   <script>
-    (function(){
-      var LazyLoad = function LazyLoad (container, url) {
+    var f = (function(){
+      var LazyLoad = function LazyLoad (container, url, offset) {
         this.container = document.querySelector(container)
+        this.queue = []
         var xhr = new XMLHttpRequest()
           , self = this
+          , scrollTimeout;
         xhr.onload = function () {
-          self.reqListener(this)
+          self.reqListener(this) // `this` refers to the xhr object here
         }
         xhr.open('GET', url, true)
         xhr.send()
+        window.addEventListener('scroll', function () {
+          if (scrollTimeout) clearTimeout(scrollTimeout)
+          scrollTimeout = setTimeout(function() {
+            if (self.scrollInTrigger) self.loadOne()
+          }, 500)
+        }, false)
       }
 
       LazyLoad.prototype = {
-        loop: function loop(list, fn) {
-          if (!list || list.length <= 0) return
-          (function chain(i) {
-            if (i >= list.length) return
-            fn(list[i], function() {
-              chain(i + 1)
-            })
-          })(0)
-        },
-
-        appendPhoto: function appendPhoto () {
-          this.container.appendChild(this.figure)
-          window.setTimeout(this.next, 100)
-        },
-
-        buildPhoto: function buildPhoto (photo, next) {
+        buildPhoto: function buildPhoto (photo) {
           var self = this
-          this.next = next
-          this.figure = document.createElement('figure')
-          this.figure.className = 'image'
+          var figure = document.createElement('figure')
+          figure.className = 'image'
           var time = document.createElement('time')
           time.className = 'image-time'
           time.innerText = photo.human_date
           var img = new Image()
           img.alt = photo.title
-          this.figure.appendChild(img)
-          this.figure.appendChild(time)
+          figure.appendChild(img)
+          figure.appendChild(time)
           img.onload = function () {
-            self.appendPhoto()
+            self.container.appendChild(figure)
           }
           img.src = photo.url
         },
 
+        scrollInTrigger: 300 >= (document.height - window.pageYOffset) - window.innerHeight,
+
+        loadOne: function loadOne () {
+          if (this.queue.length) {
+            this.buildPhoto(this.queue[0])
+            this.queue.shift()
+          }
+        },
+
         reqListener: function reqListener (xhr) {
           var photos = JSON.parse(xhr.responseText)
-            , self = this
-          this.loop(photos, function (photo, next) {
-            self.buildPhoto(photo, next)
+            , self = this;
+          [].forEach.call(photos, function(photo) {
+            self.queue.push(photo)
           })
         }
       }
 
       new LazyLoad('.l-photos', '/photos/photos.json')
     })()
+    document.addEventListener('DOMContentLoaded',f)
   </script>
 {% endcapture %}
 
