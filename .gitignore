@@ -4,3 +4,4 @@ config.ru
 .ruby-version
 css/*.css
 css/*.gz
+.images
