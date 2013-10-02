@@ -3,7 +3,7 @@
     {{body}}
     {% for post in posts limit: 3 %}
       <figure class="image">
-        <img src="{{post.assets[0].url}}" alt="{{post.title}}">
+        <img src="{{post.assets.first.url}}" alt="{{post.title}}">
         <time class="image-time">{{post.date | date: "%b %d, %Y"}}</time>
       </figure>
     {% endfor %}

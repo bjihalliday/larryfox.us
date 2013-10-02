@@ -1,17 +1,18 @@
 {% capture body %}
   <article class="post">
-    {% if meta['lead_image'] %}
+    {% if meta.lead_image.value != blank %}
       <figure class="post-lead-image image">
-        <img src="{{ meta['lead_image'] }}">
+        <img src="{{ meta.lead_image }}">
       </figure>
     {% endif %}
+
     <h1 class="post-title">{{title}}</h1>
-    <hr class="post-sep">
     {{body}}
-    {% if meta['lead_caption'] %}
+
+    {% if meta.lead_caption.value != blank %}
       <figcaption class="post-lead-caption">
         Image source: <br>
-        <i>{{ meta['lead_caption'] }}</i>
+        <i>{{ meta.lead_caption }}</i>
       </figcaption>
     {% endif %}
   </article>
